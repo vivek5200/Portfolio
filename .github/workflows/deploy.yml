@@ -3,7 +3,11 @@ name: Deploy Portfolio
 on:
   push:
     branches:
-      - main  # Adjust this if your default branch is 'master'
+      - main
+
+env:
+  # This removes the warning and opts into the new Node 24 runner
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   deploy:
@@ -21,6 +25,6 @@ jobs:
           script: |
             cd /var/www/portfolio
             git pull origin main
+            # Using the full path to npm if needed, or ensure NVM is loaded
             npm install
             npm run build
-            # Nginx handles the rest since it points to the /dist folder
