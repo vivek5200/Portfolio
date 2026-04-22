@@ -4,15 +4,24 @@ import { FaBars, FaTimes, FaSun, FaMoon, FaDownload } from 'react-icons/fa';
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isDark, setIsDark] = useState(() => {
+  const [isDark, setIsDark] = useState(true);
+
+  useEffect(() => {
     // Check system preference on mount
-    if (typeof window !== 'undefined') {
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      const savedTheme = localStorage.getItem('theme');
-      return savedTheme ? savedTheme === 'dark' : prefersDark;
-    }
-    return true;
-  });
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const savedTheme = localStorage.getItem('theme');
+    
+    const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+    setIsDark(theme === 'dark');
+    applyTheme(theme);
+  }, []);
+
+  useEffect(() => {
+    // Apply theme to document
+    const theme = isDark ? 'dark' : 'light';
+    applyTheme(theme);
+    localStorage.setItem('theme', theme);
+  }, [isDark]);
 
   const applyTheme = (theme) => {
     document.documentElement.setAttribute('data-theme', theme);
@@ -22,15 +31,6 @@ export default function Navbar() {
       document.documentElement.style.colorScheme = 'dark';
     }
   };
-
-
-
-  useEffect(() => {
-    // Apply theme to document
-    const theme = isDark ? 'dark' : 'light';
-    applyTheme(theme);
-    localStorage.setItem('theme', theme);
-  }, [isDark]);
 
   const toggleTheme = () => {
     setIsDark(!isDark);
@@ -47,7 +47,7 @@ export default function Navbar() {
   };
 
   return (
-    <motion.nav
+    <motion.nav 
       className="fixed w-full backdrop-blur-md z-50"
       style={{
         backgroundColor: 'rgba(var(--bg-rgb), 0.9)',
@@ -59,49 +59,49 @@ export default function Navbar() {
       transition={{ duration: 0.5 }}
     >
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-        <motion.h1
+        <motion.h1 
           className="text-2xl font-bold"
           style={{ color: 'var(--text)' }}
           whileHover={{ scale: 1.05 }}
         >
           VB
         </motion.h1>
-
+        
         <div className="hidden md:flex gap-8 text-sm items-center">
-          <motion.a
-            href="#home"
+          <motion.a 
+            href="#home" 
             className="hover:opacity-80 transition duration-300"
             style={{ color: 'var(--text)' }}
             whileHover={{ opacity: 1 }}
           >
             Home
           </motion.a>
-          <motion.a
-            href="#about"
+          <motion.a 
+            href="#about" 
             className="hover:opacity-80 transition duration-300"
             style={{ color: 'var(--text)' }}
             whileHover={{ opacity: 1 }}
           >
             About
           </motion.a>
-          <motion.a
-            href="#skills"
+          <motion.a 
+            href="#skills" 
             className="hover:opacity-80 transition duration-300"
             style={{ color: 'var(--text)' }}
             whileHover={{ opacity: 1 }}
           >
             Skills
           </motion.a>
-          <motion.a
-            href="#projects"
+          <motion.a 
+            href="#projects" 
             className="hover:opacity-80 transition duration-300"
             style={{ color: 'var(--text)' }}
             whileHover={{ opacity: 1 }}
           >
             Projects
           </motion.a>
-          <motion.a
-            href="#contact"
+          <motion.a 
+            href="#contact" 
             className="hover:opacity-80 transition duration-300"
             style={{ color: 'var(--text)' }}
             whileHover={{ opacity: 1 }}
@@ -120,7 +120,7 @@ export default function Navbar() {
             <FaDownload size={14} />
             Resume
           </motion.button>
-
+          
           <motion.button
             onClick={toggleTheme}
             className="p-2 rounded-lg transition duration-300 hover:opacity-80"
@@ -155,8 +155,8 @@ export default function Navbar() {
           >
             {isDark ? <FaSun style={{ color: '#fbbf24' }} /> : <FaMoon style={{ color: '#ffffff' }} />}
           </motion.button>
-
-          <motion.button
+          
+          <motion.button 
             className="text-2xl"
             onClick={() => setMenuOpen(!menuOpen)}
             whileHover={{ scale: 1.1 }}
@@ -168,7 +168,7 @@ export default function Navbar() {
       </div>
 
       {menuOpen && (
-        <motion.div
+        <motion.div 
           className="md:hidden bg-black/50 backdrop-blur-md px-6 py-4 space-y-2 border-t"
           style={{ borderColor: 'var(--text-muted)' }}
           initial={{ opacity: 0, height: 0 }}
@@ -176,48 +176,43 @@ export default function Navbar() {
           exit={{ opacity: 0, height: 0 }}
           transition={{ duration: 0.3 }}
         >
-          <motion.a
-            href="#home"
+          <motion.a 
+            href="#home" 
             className="block py-2 hover:opacity-80 transition"
             style={{ color: 'var(--text)' }}
             whileHover={{ x: 10 }}
-            onClick={() => setMenuOpen(false)}
           >
             Home
           </motion.a>
-          <motion.a
-            href="#about"
+          <motion.a 
+            href="#about" 
             className="block py-2 hover:opacity-80 transition"
             style={{ color: 'var(--text)' }}
             whileHover={{ x: 10 }}
-            onClick={() => setMenuOpen(false)}
           >
             About
           </motion.a>
-          <motion.a
-            href="#skills"
+          <motion.a 
+            href="#skills" 
             className="block py-2 hover:opacity-80 transition"
             style={{ color: 'var(--text)' }}
             whileHover={{ x: 10 }}
-            onClick={() => setMenuOpen(false)}
           >
             Skills
           </motion.a>
-          <motion.a
-            href="#projects"
+          <motion.a 
+            href="#projects" 
             className="block py-2 hover:opacity-80 transition"
             style={{ color: 'var(--text)' }}
             whileHover={{ x: 10 }}
-            onClick={() => setMenuOpen(false)}
           >
             Projects
           </motion.a>
-          <motion.a
-            href="#contact"
+          <motion.a 
+            href="#contact" 
             className="block py-2 hover:opacity-80 transition"
             style={{ color: 'var(--text)' }}
             whileHover={{ x: 10 }}
-            onClick={() => setMenuOpen(false)}
           >
             Contact
           </motion.a>

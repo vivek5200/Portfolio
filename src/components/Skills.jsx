@@ -1,4 +1,5 @@
-import { motion, useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { FaCode } from 'react-icons/fa';
 
@@ -47,7 +48,7 @@ export default function Skills() {
       color: 'var(--text)',
       background: 'linear-gradient(135deg, var(--bg) 0%, rgba(var(--accent-rgb), 0.03) 100%)'
     }}>
-      <motion.div
+      <motion.div 
         className="container mx-auto px-6 max-w-5xl"
         ref={ref}
         variants={containerVariants}
@@ -63,10 +64,10 @@ export default function Skills() {
 
         <div className="grid md:grid-cols-2 gap-12">
           {/* Technical Skills */}
-          <motion.div
+          <motion.div 
             variants={itemVariants}
             className="rounded-lg p-8 border"
-            style={{
+            style={{ 
               backgroundColor: `rgba(var(--bg-rgb), 0.3)`,
               borderColor: 'var(--text-muted)'
             }}
@@ -94,10 +95,10 @@ export default function Skills() {
           </motion.div>
 
           {/* Soft Skills */}
-          <motion.div
+          <motion.div 
             variants={itemVariants}
             className="rounded-lg p-8 border"
-            style={{
+            style={{ 
               backgroundColor: `rgba(var(--bg-rgb), 0.3)`,
               borderColor: 'var(--text-muted)'
             }}
@@ -105,7 +106,7 @@ export default function Skills() {
             <h3 className="text-2xl font-bold mb-8">Soft Skills</h3>
             <div className="grid grid-cols-2 gap-6">
               {softSkills.map((skill, idx) => (
-                <motion.div
+                <motion.div 
                   key={idx}
                   variants={itemVariants}
                   className="flex items-start gap-3 group"
