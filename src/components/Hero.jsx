@@ -37,7 +37,7 @@ export default function Hero() {
         <motion.p variants={itemVariants} className="text-sm mb-4 font-semibold tracking-wider" style={{ color: 'var(--accent)' }}>WELCOME TO MY PORTFOLIO</motion.p>
 
         <motion.h1 variants={itemVariants} className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-          Hi, I&apos;m <span style={{ color: 'var(--accent)' }}>Vivek Bendre</span>
+          Hi, I&apos;m <span style={{ color: 'var(--accent)' }}>Vivek</span>
         </motion.h1>
 
         <motion.p variants={itemVariants} className="text-xl md:text-2xl mb-8 font-light" style={{ color: 'var(--text)' }}>
