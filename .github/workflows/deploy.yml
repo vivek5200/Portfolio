@@ -24,6 +24,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd /var/www/portfolio
+            git reset --hard HEAD
             git pull origin main
             # Using the full path to npm if needed, or ensure NVM is loaded
             npm install
