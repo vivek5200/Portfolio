@@ -77,6 +77,7 @@ export default function Hero() {
         <motion.div variants={itemVariants} className="flex gap-6 justify-center">
           <motion.a
             href="https://github.com/vivek5200"
+            aria-label="GitHub Profile"
             className="hover:opacity-80 transition text-2xl"
             style={{ color: 'var(--accent)' }}
             whileHover={{ scale: 1.2, rotate: 5 }}
@@ -86,6 +87,7 @@ export default function Hero() {
           </motion.a>
           <motion.a
             href="https://linkedin.com/in/vivek-bendre"
+            aria-label="LinkedIn Profile"
             className="hover:opacity-80 transition text-2xl"
             style={{ color: 'var(--accent)' }}
             whileHover={{ scale: 1.2, rotate: -5 }}
@@ -95,6 +97,7 @@ export default function Hero() {
           </motion.a>
           <motion.a
             href="mailto:vivekbendre012@gmail.com"
+            aria-label="Send email to Vivek Bendre"
             className="hover:opacity-80 transition text-2xl"
             style={{ color: 'var(--accent)' }}
             whileHover={{ scale: 1.2, rotate: 5 }}

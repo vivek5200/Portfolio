@@ -26,10 +26,10 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold mb-4 text-sm" style={{ color: 'var(--text)' }}>CONNECT</h4>
             <div className="flex gap-4">
-              <a href="https://github.com/vivek5200" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition" style={{ color: 'var(--accent)' }}>
+              <a href="https://github.com/vivek5200" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" className="hover:opacity-80 transition" style={{ color: 'var(--accent)' }}>
                 <FaGithub />
               </a>
-              <a href="https://linkedin.com/in/vivek-bendre" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition" style={{ color: 'var(--accent)' }}>
+              <a href="https://linkedin.com/in/vivek-bendre" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" className="hover:opacity-80 transition" style={{ color: 'var(--accent)' }}>
                 <FaLinkedin />
               </a>
             </div>

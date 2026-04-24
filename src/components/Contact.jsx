@@ -90,6 +90,7 @@ export default function Contact() {
                   href="https://github.com/vivek5200"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="GitHub Profile"
                   className="hover:opacity-80 transition text-xl"
                   style={{ color: 'var(--text-muted)' }}
                   whileHover={{ scale: 1.2, rotate: 10 }}
@@ -100,6 +101,7 @@ export default function Contact() {
                   href="https://linkedin.com/in/vivek-bendre"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="LinkedIn Profile"
                   className="hover:opacity-80 transition text-xl"
                   style={{ color: 'var(--text-muted)' }}
                   whileHover={{ scale: 1.2, rotate: -10 }}
