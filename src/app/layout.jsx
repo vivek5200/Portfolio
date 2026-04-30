@@ -8,6 +8,18 @@ export const metadata = {
   },
   description:
     'Portfolio of Vivek Bendre, a full stack developer focused on web apps, backend systems, and modern digital experiences.',
+  keywords: [
+    'Vivek Bendre',
+    'Full Stack Developer',
+    'Web Developer',
+    'Software Engineer',
+    'MERN Stack',
+    'React',
+    'Next.js',
+    'Portfolio'
+  ],
+  authors: [{ name: 'Vivek Bendre', url: 'https://vivekbendre.me' }],
+  creator: 'Vivek Bendre',
   alternates: {
     canonical: '/',
   },
