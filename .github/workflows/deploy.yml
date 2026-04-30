@@ -16,7 +16,27 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Deploy to Server via SSH
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm i
+
+      - name: Build Next.js project
+        run: npm run build
+
+      - name: Copy files to Server
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: ".next,public,package.json,package-lock.json"
+          target: "/var/www/portfolio"
+
+      - name: Restart Server Process
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.SERVER_IP }}
@@ -24,8 +44,5 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd /var/www/portfolio
-            git reset --hard HEAD
-            git pull origin main
-            # Using the full path to npm if needed, or ensure NVM is loaded
-            npm install
-            npm run build
+            npm install --production
+            pm2 reload portfolio || pm2 start npm --name "portfolio" -- start
