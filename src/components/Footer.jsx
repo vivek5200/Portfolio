@@ -1,3 +1,5 @@
+"use client";
+
 import { FaGithub, FaLinkedin, FaHeart } from 'react-icons/fa';
 
 export default function Footer() {
@@ -9,7 +11,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-3 gap-12 mb-12">
           <div>
             <h3 className="text-xl font-bold mb-2" style={{ color: 'var(--text)' }}>Vivek Bendre</h3>
-            <p className="text-sm">Full Stack Developer | MERN Stack | React Native</p>
+            <p className="text-sm">Full Stack Developer | MERN Stack | Mobile Apps</p>
             <p className="text-xs mt-2" style={{ color: 'var(--text-muted)' }}>Building scalable web solutions with clean code.</p>
           </div>
 
@@ -38,7 +40,7 @@ export default function Footer() {
 
         <div className="border-t pt-8 text-center text-sm" style={{ borderColor: 'var(--text-muted)' }}>
           <p className="flex items-center justify-center gap-1">
-            Made with <FaHeart className="text-red-500 text-xs" /> © {year} Vivek Bendre
+            Built with <FaHeart className="text-red-500 text-xs" /> © {year} Vivek Bendre
           </p>
         </div>
       </div>

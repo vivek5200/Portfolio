@@ -1,27 +1,21 @@
+"use client";
+
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaBars, FaTimes, FaSun, FaMoon, FaDownload } from 'react-icons/fa';
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isDark, setIsDark] = useState(true);
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof window === 'undefined') {
+      return false;
+    }
 
-  useEffect(() => {
-    // Check system preference on mount
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     const savedTheme = localStorage.getItem('theme');
-    
-    const theme = savedTheme || (prefersDark ? 'dark' : 'light');
-    setIsDark(theme === 'dark');
-    applyTheme(theme);
-  }, []);
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-  useEffect(() => {
-    // Apply theme to document
-    const theme = isDark ? 'dark' : 'light';
-    applyTheme(theme);
-    localStorage.setItem('theme', theme);
-  }, [isDark]);
+    return (savedTheme || (prefersDark ? 'dark' : 'light')) === 'dark';
+  });
 
   const applyTheme = (theme) => {
     document.documentElement.setAttribute('data-theme', theme);
@@ -31,6 +25,13 @@ export default function Navbar() {
       document.documentElement.style.colorScheme = 'dark';
     }
   };
+
+  useEffect(() => {
+    // Apply theme to document
+    const theme = isDark ? 'dark' : 'light';
+    applyTheme(theme);
+    localStorage.setItem('theme', theme);
+  }, [isDark]);
 
   const toggleTheme = () => {
     setIsDark(!isDark);
