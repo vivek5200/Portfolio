@@ -44,5 +44,5 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd /var/www/portfolio
-            npm install --production
-            pm2 reload portfolio || pm2 start npm --name "portfolio" -- start
+            npm install --omit=dev
+            npx pm2 reload portfolio-next || npx pm2 start npm --name "portfolio-next" -- start
